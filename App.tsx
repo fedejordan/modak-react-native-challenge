@@ -1,11 +1,16 @@
 import { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { ProductsHttpRepository } from '@/data/repositories/products-http.repository';
+import { CategoriesHttpRepository } from '@/data/repositories/categories-http.repository';
 
-const repo = new ProductsHttpRepository();
+const productsRepository = new ProductsHttpRepository();
+const categoriesRepository = new CategoriesHttpRepository();
 
 async function loadHome() {
-  const [products, categories] = await Promise.all([repo.getAll(), repo.getCategories()]);
+  const [products, categories] = await Promise.all([
+    productsRepository.getAll(),
+    categoriesRepository.getCategories(),
+  ]);
   return { products, categories };
 }
 
