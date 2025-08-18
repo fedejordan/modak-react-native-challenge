@@ -1,11 +1,10 @@
-/* eslint-disable no-undef */
-
 import 'dotenv/config';
 
 export default {
   expo: {
     name: 'modak-rn-challenge',
     slug: 'modak-rn-challenge',
+    scheme: 'modak-rn-challenge',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',

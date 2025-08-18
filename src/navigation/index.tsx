@@ -2,23 +2,13 @@ import * as React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { RootStackParamList } from './types';
+import { linking } from './linking';
 
 import HomeScreen from '@/screens/HomeScreen';
 import ProductDetailScreen from '@/screens/ProductDetailScreen';
 import CategoryScreen from '@/screens/CategoryScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-
-const linking = {
-  prefixes: ['modak://', 'https://modak.app'],
-  config: {
-    screens: {
-      Home: '',
-      ProductDetail: 'product/:id',
-      Category: 'category/:slug',
-    },
-  },
-};
 
 export default function AppNavigator() {
   return (
