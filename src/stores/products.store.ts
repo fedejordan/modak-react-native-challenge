@@ -31,7 +31,7 @@ type Actions = {
 };
 
 // Derivados útiles (selectores computados)
-const sortProducts = (list: Product[], sortBy: SortBy) => {
+export const sortProducts = (list: Product[], sortBy: SortBy) => {
   if (!sortBy) return list;
   const copy = [...list];
   if (sortBy === 'price') copy.sort((a, b) => a.price - b.price);
