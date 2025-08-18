@@ -1,92 +1,20 @@
-import { useEffect } from 'react';
-import { View, Text, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
-import {
-  useProductsStore,
-  useVisibleProducts,
-  useCategories,
-  useLoading,
-  useError,
-} from '@/stores/products.store';
+import { View, Text, Button } from 'react-native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '@/navigation/types';
 
-export default function HomeScreen() {
-  const products = useVisibleProducts();
-  const categories = useCategories();
-  const loading = useLoading();
-  const error = useError();
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-  const fetchCategories = useProductsStore((s) => s.fetchCategories);
-  const fetchProducts = useProductsStore((s) => s.fetchProducts);
-  const setCategory = useProductsStore((s) => s.setCategory);
-  const setSort = useProductsStore((s) => s.setSort);
-  const clearError = useProductsStore((s) => s.clearError);
-
-  useEffect(() => {
-    fetchCategories();
-    fetchProducts();
-  }, []);
-
+export default function HomeScreen({ navigation }: Props) {
   return (
-    <View style={{ flex: 1, padding: 16 }}>
-      {loading && <ActivityIndicator />}
-      {error && (
-        <TouchableOpacity onPress={clearError}>
-          <Text style={{ color: 'red' }}>{error}</Text>
-        </TouchableOpacity>
-      )}
-
-      {/* Filtros simples */}
-      <FlatList
-        horizontal
-        data={['all', ...categories]}
-        keyExtractor={(c) => c}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => {
-              setCategory(item === 'all' ? null : item);
-              fetchProducts();
-            }}
-            style={{ padding: 8, marginRight: 8, borderWidth: 1, borderRadius: 8 }}
-          >
-            <Text>{item}</Text>
-          </TouchableOpacity>
-        )}
-        style={{ marginBottom: 12 }}
+    <View style={{ flex: 1, gap: 12, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home</Text>
+      <Button
+        title="Go to product 1"
+        onPress={() => navigation.navigate('ProductDetail', { id: 1 })}
       />
-
-      {/* Orden */}
-      <View style={{ flexDirection: 'row', gap: 8, marginBottom: 12 }}>
-        <TouchableOpacity
-          onPress={() => {
-            setSort('price');
-            fetchProducts();
-          }}
-          style={{ padding: 8, borderWidth: 1, borderRadius: 8 }}
-        >
-          <Text>Sort: Price</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            setSort('rating');
-            fetchProducts();
-          }}
-          style={{ padding: 8, borderWidth: 1, borderRadius: 8 }}
-        >
-          <Text>Sort: Rating</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Lista */}
-      <FlatList
-        data={products}
-        keyExtractor={(p) => String(p.id)}
-        renderItem={({ item }) => (
-          <View style={{ padding: 12, borderBottomWidth: 1 }}>
-            <Text>{item.title}</Text>
-            <Text>
-              ${item.price} • ⭐ {item.rating}
-            </Text>
-          </View>
-        )}
+      <Button
+        title="See 'smartphones'"
+        onPress={() => navigation.navigate('Category', { slug: 'smartphones' })}
       />
     </View>
   );
