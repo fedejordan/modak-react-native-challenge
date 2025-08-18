@@ -1,8 +1,21 @@
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
 
-function ProductCard({ item }: { item: any }) {
+type Props = {
+  item: {
+    id: number;
+    title: string;
+    price: number;
+    rating: number;
+    thumbnail: string;
+  };
+  onPress?: () => void;
+};
+
+function ProductCard({ item, onPress }: Props) {
   return (
-    <View
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.8}
       style={{
         flexDirection: 'row',
         alignItems: 'center',
@@ -20,7 +33,7 @@ function ProductCard({ item }: { item: any }) {
           ${item.price} • ⭐ {item.rating}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

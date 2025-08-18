@@ -1,5 +1,6 @@
 import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useEffect, useMemo, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   useProductsStore,
   sortProducts,
@@ -12,8 +13,14 @@ import SortView from '@/components/SortView';
 import CategoriesView from '@/components/CategoriesView';
 import LoadingView from '@/components/LoadingView';
 import ErrorView from '@/components/ErrorView';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '@/navigation/types';
+
+type Nav = NativeStackNavigationProp<RootStackParamList>;
 
 export default function HomeScreen() {
+  const navigation = useNavigation<Nav>();
+
   const products = useProductsStore((state) => state.products);
   const sortBy = useProductsStore((state) => state.sortBy);
   const categories = useCategories();
@@ -60,7 +67,12 @@ export default function HomeScreen() {
           <FlatList
             data={visibleProducts}
             keyExtractor={(p) => String(p.id)}
-            renderItem={({ item }) => <ProductCard item={item} />}
+            renderItem={({ item }) => (
+              <ProductCard
+                item={item}
+                onPress={() => navigation.navigate('ProductDetail', { id: item.id })}
+              />
+            )}
             style={{ flex: 1 }}
             refreshing={refreshing}
             onRefresh={onRefresh}

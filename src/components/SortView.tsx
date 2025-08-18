@@ -1,10 +1,12 @@
 import { View, TouchableOpacity, Text } from 'react-native';
 
+import { SortBy } from '@/domain/types/sort';
+
 function SortView({
   setSort,
   fetchProducts,
 }: {
-  setSort: (sort: string) => void;
+  setSort: (sort: SortBy) => void;
   fetchProducts: () => void;
 }) {
   return (
