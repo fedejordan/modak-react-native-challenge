@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useEffect, useMemo, useState } from 'react';
 import {
   useProductsStore,
@@ -7,6 +7,11 @@ import {
   useLoading,
   useError,
 } from '@/stores/products.store';
+import ProductCard from '@/components/ProductCard';
+import SortView from '@/components/SortView';
+import CategoriesView from '@/components/CategoriesView';
+import LoadingView from '@/components/LoadingView';
+import ErrorView from '@/components/ErrorView';
 
 export default function HomeScreen() {
   const products = useProductsStore((state) => state.products);
@@ -39,78 +44,23 @@ export default function HomeScreen() {
   return (
     <View style={{ flex: 1, padding: 16 }}>
       {loading ? (
-        <ActivityIndicator />
+        <LoadingView />
       ) : error ? (
-        <TouchableOpacity onPress={clearError}>
-          <Text style={{ color: 'red' }}>{error}</Text>
-        </TouchableOpacity>
+        <ErrorView message={error} onRetry={clearError} />
       ) : (
         <>
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={['all', ...categories]}
-            keyExtractor={(c) => c}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                onPress={() => {
-                  setCategory(item === 'all' ? null : item);
-                  fetchProducts();
-                }}
-                style={{ padding: 8, marginRight: 8, borderWidth: 1, borderRadius: 8 }}
-              >
-                <Text>{item}</Text>
-              </TouchableOpacity>
-            )}
-            style={{ height: 40, marginBottom: 16, flexGrow: 0, flexShrink: 1 }}
-            contentContainerStyle={{ alignItems: 'center' }}
+          <CategoriesView
+            categories={categories}
+            setCategory={setCategory}
+            fetchProducts={fetchProducts}
           />
 
-          <View style={{ flexDirection: 'row', gap: 8, marginBottom: 12 }}>
-            <TouchableOpacity
-              onPress={() => {
-                setSort('price');
-                fetchProducts();
-              }}
-              style={{ padding: 8, borderWidth: 1, borderRadius: 8 }}
-            >
-              <Text>Sort: Price</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                setSort('rating');
-                fetchProducts();
-              }}
-              style={{ padding: 8, borderWidth: 1, borderRadius: 8 }}
-            >
-              <Text>Sort: Rating</Text>
-            </TouchableOpacity>
-          </View>
+          <SortView setSort={setSort} fetchProducts={fetchProducts} />
 
           <FlatList
             data={visibleProducts}
             keyExtractor={(p) => String(p.id)}
-            renderItem={({ item }) => (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  paddingVertical: 8,
-                  borderBottomWidth: 1,
-                }}
-              >
-                <Image
-                  source={{ uri: item.thumbnail }}
-                  style={{ width: 60, height: 60, borderRadius: 8, marginRight: 12 }}
-                />
-                <View style={{ flex: 1 }}>
-                  <Text>{item.title}</Text>
-                  <Text>
-                    ${item.price} • ⭐ {item.rating}
-                  </Text>
-                </View>
-              </View>
-            )}
+            renderItem={({ item }) => <ProductCard item={item} />}
             style={{ flex: 1 }}
             refreshing={refreshing}
             onRefresh={onRefresh}
