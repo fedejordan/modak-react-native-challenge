@@ -2,11 +2,9 @@ import * as React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { RootStackParamList } from './types';
-import { linking } from './linking';
-
+import linking from './linking';
 import HomeScreen from '@/screens/HomeScreen';
 import ProductDetailScreen from '@/screens/ProductDetailScreen';
-import CategoryScreen from '@/screens/CategoryScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -20,7 +18,6 @@ export default function AppNavigator() {
           component={ProductDetailScreen}
           options={{ title: 'Product' }}
         />
-        <Stack.Screen name="Category" component={CategoryScreen} options={{ title: 'Category' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

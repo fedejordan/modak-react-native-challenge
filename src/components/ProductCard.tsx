@@ -1,4 +1,5 @@
 import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { formatPrice } from '@/utils/format';
 
 type Props = {
   item: {
@@ -30,7 +31,7 @@ function ProductCard({ item, onPress }: Props) {
       <View style={{ flex: 1 }}>
         <Text>{item.title}</Text>
         <Text>
-          ${item.price} • ⭐ {item.rating}
+          {formatPrice(item.price)} • ⭐ {item.rating}
         </Text>
       </View>
     </TouchableOpacity>
