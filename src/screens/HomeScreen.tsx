@@ -42,12 +42,13 @@ export default function HomeScreen() {
   useEffect(() => {
     if (category && categories.includes(category)) {
       setCategory(category);
+      fetchProducts();
     }
   }, [category, categories]);
 
   useEffect(() => {
     fetchCategories();
-    fetchProducts();
+    if (!category) fetchProducts();
   }, []);
 
   const onRefresh = async () => {
