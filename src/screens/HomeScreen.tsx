@@ -1,6 +1,6 @@
 import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import {
   useProductsStore,
   sortProducts,
@@ -15,11 +15,14 @@ import LoadingView from '@/components/LoadingView';
 import ErrorView from '@/components/ErrorView';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@/navigation/types';
+type HomeRoute = RouteProp<RootStackParamList, 'Home'>;
 
 type Nav = NativeStackNavigationProp<RootStackParamList>;
 
 export default function HomeScreen() {
   const navigation = useNavigation<Nav>();
+  const { params } = useRoute<HomeRoute>();
+  const category = params?.category;
 
   const products = useProductsStore((state) => state.products);
   const sortBy = useProductsStore((state) => state.sortBy);
@@ -35,6 +38,12 @@ export default function HomeScreen() {
   const clearError = useProductsStore((action) => action.clearError);
 
   const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    if (category && categories.includes(category)) {
+      setCategory(category);
+    }
+  }, [category, categories]);
 
   useEffect(() => {
     fetchCategories();
