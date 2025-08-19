@@ -4,6 +4,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import type { RootStackParamList } from '@/navigation/types';
 import { useProductsStore } from '@/stores/products.store';
 import { formatPrice } from '@/utils/format';
+import AddReminderButton from '@/components/AddReminderButton';
 type ProductDetailRoute = RouteProp<RootStackParamList, 'ProductDetail'>;
 
 export default function ProductDetailScreen() {
@@ -55,9 +56,7 @@ export default function ProductDetailScreen() {
   if (error || !product) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-        <Text style={{ color: 'red', textAlign: 'center' }}>
-          {error ?? 'Producto no encontrado'}
-        </Text>
+        <Text style={{ color: 'red', textAlign: 'center' }}>{error ?? 'Not linked product'}</Text>
       </View>
     );
   }
@@ -76,6 +75,11 @@ export default function ProductDetailScreen() {
       <Text style={{ marginBottom: 8, color: '#444' }}>{product.description}</Text>
       <Text style={{ marginBottom: 4 }}>Stock: {product.stock}</Text>
       <Text style={{ marginBottom: 16 }}>Category: {product.category}</Text>
+      <AddReminderButton
+        title={product.title}
+        notes={product.description}
+        whenISO={new Date(Date.now() + 1000 * 60 * 60 * 24 * 7).toISOString()}
+      />
     </ScrollView>
   );
 }

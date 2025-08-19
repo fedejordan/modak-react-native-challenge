@@ -17,6 +17,10 @@ export default {
     },
     ios: {
       supportsTablet: true,
+      bundleIdentifier: 'com.anonymous.modakrnchallenge',
+      infoPlist: {
+        NSCalendarsUsageDescription: 'We need to access your calendar for the purchase reminder.',
+      },
     },
     android: {
       adaptiveIcon: {
@@ -24,6 +28,7 @@ export default {
         backgroundColor: '#ffffff',
       },
       edgeToEdgeEnabled: true,
+      package: 'com.anonymous.modakrnchallenge',
     },
     web: {
       favicon: './assets/favicon.png',
