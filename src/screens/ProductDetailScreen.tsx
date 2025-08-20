@@ -5,6 +5,8 @@ import type { RootStackParamList } from '@/navigation/types';
 import { useProductsStore } from '@/stores/products.store';
 import { formatPrice } from '@/utils/format';
 import AddReminderButton from '@/components/AddReminderButton';
+import TriggerNotificationButton from '@/components/TriggerNotificationButton';
+
 type ProductDetailRoute = RouteProp<RootStackParamList, 'ProductDetail'>;
 
 export default function ProductDetailScreen() {
@@ -80,6 +82,7 @@ export default function ProductDetailScreen() {
         notes={product.description}
         whenISO={new Date(Date.now() + 1000 * 60 * 60 * 24 * 7).toISOString()}
       />
+      <TriggerNotificationButton title={product.title} />
     </ScrollView>
   );
 }

@@ -5,10 +5,16 @@ import type { RootStackParamList } from './types';
 import linking from './linking';
 import HomeScreen from '@/screens/HomeScreen';
 import ProductDetailScreen from '@/screens/ProductDetailScreen';
+import { useEffect } from 'react';
+import { configureNotifications } from '@/utils/notifications';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function AppNavigator() {
+  useEffect(() => {
+    configureNotifications();
+  }, []);
+
   return (
     <NavigationContainer theme={DefaultTheme} linking={linking}>
       <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: true }}>
