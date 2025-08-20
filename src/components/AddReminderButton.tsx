@@ -4,7 +4,7 @@ import { addPurchaseReminder } from '@/native/purchaseReminder';
 function AddReminderButton({
   title,
   notes,
-  whenISO, // e.g. new Date().toISOString()
+  whenISO,
 }: {
   title: string;
   notes?: string;
@@ -16,7 +16,7 @@ function AddReminderButton({
         await addPurchaseReminder(title, {
           notes,
           isoDate: whenISO,
-          durationMinutes: 60, // opcional
+          durationMinutes: 60,
         });
         Alert.alert('Done ✅', 'Event created in calendar.');
       } else {
