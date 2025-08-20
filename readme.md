@@ -1,4 +1,4 @@
-# Products App
+# Modak React Native Challenge App
 
 A React Native app built with TypeScript, Expo, and Zustand for state management. The app integrates with the [DummyJSON - Products API](https://dummyjson.com/products) to provide a catalog of products.
 
@@ -8,7 +8,7 @@ A React Native app built with TypeScript, Expo, and Zustand for state management
 - **Filter & Sort**: Filter by category and sort by price or rating.
 - **Product Details**: View detailed product information (description, brand, stock).
 - **Deep Linking**: Open the app to a specific category or product by ID.
-- **Native Module**: Add product purchase reminders to the calendar (iOS/Android).
+- **Native Module**: Add product purchase reminders to the calendar (iOS).
 - **Push Notifications**: Receive updates or reminders.
 
 ## Tech Stack
@@ -35,12 +35,18 @@ A React Native app built with TypeScript, Expo, and Zustand for state management
    yarn install
    ```
 
-3. Run the app:
-   - Start the development server: `expo start`
-   - iOS: Press `i` in the terminal or scan the QR code with the Expo Go app.
-   - Android: Press `a` in the terminal or scan the QR code with the Expo Go app.
+3. Prebuild the app:
+   - Run the following command to generate the native iOS and Android directories:
+     ```bash
+     expo prebuild
+     ```
 
-4. Use deep links:
+4. Run the app:
+   - Start the development server: `expo start`
+   - iOS: Open the project in Xcode and run it on a simulator or device.
+   - Android: Open the project in Android Studio and run it on a simulator or device.
+
+5. Use deep links:
    ```
    modak-rn-challenge://product/{productId}
    modak-rn-challenge://category/{categoryName}
