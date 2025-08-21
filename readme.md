@@ -69,3 +69,12 @@ A React Native app built with TypeScript, Expo, and Zustand for state management
 ## Bonus Features
 
 - Deep linking
+
+## Demo Videos
+
+Here are some demo videos showcasing the app's features:
+
+- **Deep Link to Category**: [Watch Video](#)
+- **Deep Link to Product**: [Watch Video](#)
+- **Reminder Event in Calendar**: [Watch Video](#)
+- **Local Notification**: [Watch Video](#)

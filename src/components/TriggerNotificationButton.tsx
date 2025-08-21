@@ -16,7 +16,7 @@ function TriggerNotificationButton({ title }: { title: string }) {
         body: 'Local notification test ✅',
         sound: Platform.OS === 'ios' ? 'default' : undefined,
       },
-      trigger: Platform.OS === 'android' ? { channelId: 'default', seconds: 3 } : { seconds: 3 }, // iOS
+      trigger: Platform.OS === 'android' ? { channelId: 'default', seconds: 3 } : { seconds: 3 },
     });
   };
 
