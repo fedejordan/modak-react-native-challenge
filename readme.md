@@ -52,6 +52,11 @@ A React Native app built with TypeScript, Expo, and Zustand for state management
    modak-rn-challenge://category/{categoryName}
    ```
 
+6. Run tests:
+   ```
+   npm test
+   ```
+
 ## Project Structure
 
 - **`src/components`**: Reusable UI components
@@ -71,6 +76,7 @@ A React Native app built with TypeScript, Expo, and Zustand for state management
 - Deep linking
 - Reminders in calendar
 - Local notification
+- Some unit tests
 
 ## Demo Videos
 
