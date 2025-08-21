@@ -17,6 +17,8 @@ A React Native app built with TypeScript, Expo, and Zustand for state management
 - **TypeScript** for type safety
 - **Zustand** for state management
 - **Clean Architecture**: Decoupled UI and data fetching
+- **Jest**: Unit testing
+- **Github Actions**: Minimal check post commit check
 
 ## Setup
 
@@ -77,6 +79,7 @@ A React Native app built with TypeScript, Expo, and Zustand for state management
 - Reminders in calendar
 - Local notification
 - Some unit tests
+- GHA commit check
 
 ## Demo Videos
 
