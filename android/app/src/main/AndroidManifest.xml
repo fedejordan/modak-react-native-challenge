@@ -25,6 +25,7 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="modak-rn-challenge"/>
+        <data android:scheme="exp+modak-rn-challenge"/>
       </intent-filter>
     </activity>
   </application>

@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 export default {
   expo: {
+    plugins: ['expo-dev-client', 'expo-notifications'],
     name: 'modak-rn-challenge',
     slug: 'modak-rn-challenge',
     scheme: 'modak-rn-challenge',
@@ -21,6 +22,7 @@ export default {
       infoPlist: {
         NSCalendarsUsageDescription: 'We need to access your calendar for the purchase reminder.',
       },
+      usesNotifications: true,
     },
     android: {
       adaptiveIcon: {

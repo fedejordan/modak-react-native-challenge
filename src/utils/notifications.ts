@@ -55,7 +55,6 @@ export async function cancelNotification(id: string) {
 export function configureNotifications() {
   Notifications.setNotificationHandler({
     handleNotification: async () => ({
-      shouldShowAlert: true,
       shouldPlaySound: false,
       shouldSetBadge: false,
       shouldShowBanner: true,
