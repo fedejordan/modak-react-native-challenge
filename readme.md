@@ -104,7 +104,6 @@ https://github.com/user-attachments/assets/e1bd647a-9c07-4c39-9f81-fc91cea53a7a
 ## Possible improvements
 
 - Fixing CI flow for unit testing android and iOS 
-- Android development build not implemented (no android native module to use)
 - Transitions animations
 - Favourites section
 - Pagination
