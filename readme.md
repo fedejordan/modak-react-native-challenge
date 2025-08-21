@@ -74,7 +74,20 @@ A React Native app built with TypeScript, Expo, and Zustand for state management
 
 Here are some demo videos showcasing the app's features:
 
-- **Deep Link to Category**: [Watch Video](#)
-- **Deep Link to Product**: [Watch Video](#)
-- **Reminder Event in Calendar**: [Watch Video](#)
-- **Local Notification**: [Watch Video](#)
+- **Deep Link to Category**: 
+
+https://github.com/user-attachments/assets/f3238479-c1fb-4505-81f3-31e187e477c6
+
+- **Deep Link to Product**:
+
+https://github.com/user-attachments/assets/24b07e42-b808-4b5a-ae9f-1b26ae401531
+
+- **Reminder Event in Calendar**:
+
+https://github.com/user-attachments/assets/f3c4da9e-25eb-445e-874b-1cff955fda27
+
+- **Local Notification**:
+
+https://github.com/user-attachments/assets/e1bd647a-9c07-4c39-9f81-fc91cea53a7a
+
+
