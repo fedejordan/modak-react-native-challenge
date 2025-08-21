@@ -69,6 +69,8 @@ A React Native app built with TypeScript, Expo, and Zustand for state management
 ## Bonus Features
 
 - Deep linking
+- Reminders in calendar
+- Local notification
 
 ## Demo Videos
 
