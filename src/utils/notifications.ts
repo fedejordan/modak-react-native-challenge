@@ -36,9 +36,13 @@ export async function schedulePurchaseReminderNotification(
     body: `“${product.title}” — ¿still interested??`,
     data: { productId: String(product.id), scheduledFromISO: whenISO },
     sound: Platform.OS === 'ios' ? 'default' : undefined,
+    ...(Platform.OS === 'android' ? { channelId: 'default' } : {}),
   };
 
-  const trigger: Date | Notifications.NotificationTriggerInput = fireDate;
+  const trigger: Notifications.DateTriggerInput = {
+    type: Notifications.SchedulableTriggerInputTypes.DATE,
+    date: fireDate,
+  };
 
   const id = await Notifications.scheduleNotificationAsync({ content, trigger });
   return id;

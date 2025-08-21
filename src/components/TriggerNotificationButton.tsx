@@ -15,8 +15,13 @@ function TriggerNotificationButton({ title }: { title: string }) {
         title,
         body: 'Local notification test ✅',
         sound: Platform.OS === 'ios' ? 'default' : undefined,
+        ...(Platform.OS === 'android' ? { channelId: 'default' } : {}),
       },
-      trigger: Platform.OS === 'android' ? { channelId: 'default', seconds: 3 } : { seconds: 3 },
+      trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+        seconds: 60,
+        repeats: false,
+      } satisfies Notifications.TimeIntervalNotificationTrigger,
     });
   };
 
