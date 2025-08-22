@@ -57,6 +57,7 @@ A React Native app built with TypeScript, Expo, and Zustand for state management
    Example: 
    ```
    adb shell am start -W -a android.intent.action.VIEW -d "modak-rn-challenge://product/123" com.anonymous.modakrnchallenge
+   xcrun simctl openurl booted "modak-rn-challenge://product/123"
    ```
 
 6. Run tests:
