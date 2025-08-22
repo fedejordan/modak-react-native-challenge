@@ -67,8 +67,7 @@
       "node_modules/(?!(@react-native|react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|expo-.*|@expo/.*|@unimodules/.*|unimodules-.*|sentry-expo|native-base|react-native-svg)/)"
     ],
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1",
-      "^expo$": "<rootDir>/__mocks__/expoMock.js"
+      "^@/(.*)$": "<rootDir>/src/$1"
     }
   },
   "private": true
