@@ -1,14 +1,16 @@
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { formatPrice } from '@/utils/format';
 
+export type ProductCardItem = {
+  id: number;
+  title: string;
+  price: number;
+  rating: number;
+  thumbnail: string;
+};
+
 type Props = {
-  item: {
-    id: number;
-    title: string;
-    price: number;
-    rating: number;
-    thumbnail: string;
-  };
+  item: ProductCardItem;
   onPress?: () => void;
 };
 

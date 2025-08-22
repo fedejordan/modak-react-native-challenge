@@ -9,10 +9,8 @@ const prettier = require('eslint-config-prettier');
 const prettierPlugin = require('eslint-plugin-prettier');
 
 module.exports = [
-  // Ignorados
   { ignores: ['node_modules/', 'dist/', 'build/', 'android/', 'ios/'] },
 
-  // ⬅️ Bloque GLOBAL con "settings" (aplica a todo)
   {
     settings: {
       react: { version: 'detect' },
@@ -20,12 +18,10 @@ module.exports = [
     },
   },
 
-  // Presets
   js.configs.recommended,
   ...ts.configs.recommended,
   react.configs.flat.recommended,
 
-  // Reglas del proyecto
   {
     files: ['**/*.{ts,tsx,js,jsx}'],
     plugins: {

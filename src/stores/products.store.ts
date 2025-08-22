@@ -60,8 +60,8 @@ export const useProductsStore = create<State & Actions>()(
       try {
         const categories = await categoriesRepository.getCategories();
         set({ categories });
-      } catch (e: any) {
-        set({ error: String(e) });
+      } catch (e: unknown) {
+        set({ error: String((e as Error)?.message ?? e) });
       } finally {
         set({ loading: false });
       }
@@ -75,8 +75,8 @@ export const useProductsStore = create<State & Actions>()(
           ? await productsRepository.getByCategory(selectedCategory)
           : await productsRepository.getAll();
         set({ products: sortProducts(products, sortBy) });
-      } catch (e: any) {
-        set({ error: String(e) });
+      } catch (e: unknown) {
+        set({ error: String((e as Error)?.message ?? e) });
       } finally {
         set({ loading: false });
       }

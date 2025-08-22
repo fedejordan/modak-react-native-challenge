@@ -29,7 +29,7 @@ const PurchaseReminderModule: PurchaseReminderModuleType =
         throw new Error(LINKING_ERROR);
       },
     },
-  ) as any);
+  ) as unknown);
 
 export async function addPurchaseReminder(
   title: string,

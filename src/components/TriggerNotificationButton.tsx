@@ -10,7 +10,7 @@ function TriggerNotificationButton({ title }: { title: string }) {
       return;
     }
 
-    const id = await Notifications.scheduleNotificationAsync({
+    await Notifications.scheduleNotificationAsync({
       content: {
         title,
         body: 'Local notification test ✅',

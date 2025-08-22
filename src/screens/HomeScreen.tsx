@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import {

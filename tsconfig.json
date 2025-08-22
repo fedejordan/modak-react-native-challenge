@@ -5,6 +5,9 @@
     "paths": {
       "@/*": ["*"]
     },
-    "strict": true
+    "strict": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "allowJs": true
   }
 }

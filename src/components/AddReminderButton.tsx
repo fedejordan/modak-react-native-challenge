@@ -22,8 +22,12 @@ function AddReminderButton({
       } else {
         Alert.alert('Info', 'This feature is only available on iOS.');
       }
-    } catch (e: any) {
-      Alert.alert('Error', e?.message ?? "Event couldn't be created.");
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        Alert.alert('Error', e?.message ?? "Event couldn't be created.");
+      } else {
+        Alert.alert('Error', "Event couldn't be created.");
+      }
     }
   };
 

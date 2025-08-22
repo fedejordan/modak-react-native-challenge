@@ -37,8 +37,8 @@ export default function ProductDetailScreen() {
       try {
         const p = await fetchProductById(id);
         if (mounted) setProduct(p);
-      } catch (e: any) {
-        if (mounted) setError(String(e?.message ?? e));
+      } catch (e: unknown) {
+        if (mounted) setError(String((e as Error)?.message ?? e));
       } finally {
         if (mounted) setLoading(false);
       }
