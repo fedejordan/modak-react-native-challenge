@@ -11,6 +11,6 @@ describe('schedulePurchaseReminderNotification', () => {
     expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledTimes(1);
     const call = (Notifications.scheduleNotificationAsync as jest.Mock).mock.calls[0][0];
     expect(call.content.title).toMatch('Purchase reminder');
-    expect(call.trigger instanceof Date).toBe(true);
+    expect(call.trigger.date instanceof Date).toBe(true);
   });
 });
